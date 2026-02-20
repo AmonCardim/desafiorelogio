@@ -1,5 +1,6 @@
 package dev.amoncardim.desafiorelogio.service;
 
+import dev.amoncardim.desafiorelogio.dto.AtualizarRelogioRequest;
 import dev.amoncardim.desafiorelogio.dto.CriarRelogioRequest;
 import dev.amoncardim.desafiorelogio.dto.PaginaRelogioDto;
 import dev.amoncardim.desafiorelogio.dto.RelogioDto;
@@ -107,7 +108,7 @@ public class RelogioService {
         return mapeador.toDto(relogioRepository.save(r));
     }
 
-    public RelogioDto atualizar (UUID id, CriarRelogioRequest req) {
+    public RelogioDto atualizar (UUID id, AtualizarRelogioRequest req) {
         Relogio r = relogioRepository.findById(id)
                 .orElseThrow(() -> new NaoEncontradoException("Relógio não encontrado: " + id));
         r.setMarca(req.marca());
