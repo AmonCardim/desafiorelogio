@@ -8,6 +8,7 @@ import dev.amoncardim.desafiorelogio.entity.Relogio;
 import dev.amoncardim.desafiorelogio.entity.enums.MaterialCaixa;
 import dev.amoncardim.desafiorelogio.entity.enums.TipoMovimento;
 import dev.amoncardim.desafiorelogio.entity.enums.TipoVidro;
+import dev.amoncardim.desafiorelogio.exception.NaoEncontradoException;
 import dev.amoncardim.desafiorelogio.mapper.RelogioMapper;
 import dev.amoncardim.desafiorelogio.repository.RelogioRepository;
 import lombok.RequiredArgsConstructor;
@@ -127,7 +128,7 @@ public class RelogioService {
         return mapeador.toDto(relogioRepository.save(r));
     }
 
-    public void remover(UUID id,) {
+    public void remover(UUID id) {
         if (!relogioRepository.existsById(id)) {
             throw new NaoEncontradoException("Relógio não encontrado: " + id);
         }
